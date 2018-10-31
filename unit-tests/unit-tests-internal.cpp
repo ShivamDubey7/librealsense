@@ -57,7 +57,7 @@ void disable_sensitive_options_for(rs2::device& dev)
 
 bool wait_for_reset(std::function<bool(void)> func, std::shared_ptr<device> dev)
 {
-    if (func())
+    if (func()==true)
         return true;
 
     WARN("Reset workaround");
@@ -111,8 +111,7 @@ struct stream_request
 {
     rs2_stream stream;
     rs2_format format;
-    int width;
-    int height;
+    int width,height;
     int fps;
     int index;
 
